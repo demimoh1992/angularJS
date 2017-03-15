@@ -1,0 +1,49 @@
+<section>
+	<div id="search-bar">
+		<label for="search">Search </label>
+		<input ng-model="string" data-ng-change="search(string)" />
+		<!-- select doesn't work in chrome -->
+		<select>
+			<option value="" data-ng-click="filter()">
+				All
+			</option>
+			<option data-ng-repeat="cat in category"
+					value="{{cat.category_id}}"
+					data-ng-click="filter(cat.category_id)">
+				{{cat.name}}
+			</option>
+		</select>
+	</div>
+	<div data-ng-show="totalFilmC >= '1'">
+		<table class="film-list-table">
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Category</th>
+				<th>Release Year</th>
+				<th>Ratings</th>
+				<th>Last Update</th>
+			</tr>
+
+			<tr data-ng-repeat="film in films"
+				data-ng-click="selectFilm($event, film)"
+				data-ng-class="{'selected':selectedFilm.film_id === film.film_id}"
+				style="cursor: pointer;" >
+				<td>{{film.title}}</td>
+				<td>{{film.desc}}</td>
+				<td>{{film.name}}</td>
+				<td>{{film.release_year}}</td>
+				<td>{{film.rating}}</td>
+				<td>{{film.last_update}}</td>
+			</tr>
+		</table>
+		<br />
+		<button ng-click="goPage(-1)" ng-disabled="currentPage == 0">Previous</button>
+			{{currentPage+1}}/{{totalFilmC}}
+		<button ng-click="goPage(1)" ng-disabled="(totalFilmC-currentPage) <= 20">Next</button>
+	</div>
+	<div data-ng-show="totalFilmC == '0'">
+		<p>No results.</p>
+	</div>
+
+</section>

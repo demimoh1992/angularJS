@@ -1,0 +1,8 @@
+<h2>Comment Editor</h2>
+<form>
+    <textarea data-ng-model="selectedNote.comment" id="comment"></textarea>
+	<input type="hidden" value="{{selectedNote.film_id}}" />
+
+    <button data-ng-click="saveNote()">Save</button>
+    <button data-ng-click="abandonEdit()">Cancel</button>
+</form>

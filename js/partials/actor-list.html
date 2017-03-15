@@ -1,0 +1,85 @@
+<section style="position:relative;">
+    <div data-ng-show="editorVisible"
+         data-ng-include="'js/partials/note-edit.html'"
+         id="noteEditor"
+         class='editor shadow'>
+    </div>
+    <table class="film-list-table">
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Film Title</th>
+	    	<td>{{filmdetails.title}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	        <th>Description</th>
+	        <td>{{filmdetails.description}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Release</th>
+	    	<td>{{filmdetails.release_year}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Language</th>
+	    	<td>{{filmdetails.name_lang}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Original</th>
+	    	<td>{{filmdetails.name_orilang}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Rent Dura</th>
+	    	<td>{{filmdetails.rental_duration}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Rate</th>
+	    	<td>{{filmdetails.rental_rate}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Length</th>
+	    	<td>{{filmdetails.length}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Cost</th>
+	    	<td>{{filmdetails.replacement_cost}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Ratings</th>
+	    	<td>{{filmdetails.rating}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Special</th>
+	    	<td>{{filmdetails.special_features}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Last update</th>
+	    	<td>{{filmdetails.last_update}}</td>
+	    </tr>
+	    <tr data-ng-repeat="filmdetails in filmdetail">
+	    	<th>Category</th>
+	    	<td>{{filmdetails.name_cat}}</td>
+	    </tr>
+  	</table>
+    <table class="film-list-table">
+    	<div id="actor-list">
+		    <h2>List of actors</h2>
+		    <tr data-ng-repeat="actor in actors">
+		        <td>{{actor.first_name}} {{actor.last_name}}</td>
+		    </tr>
+	    </div>
+  	</table>
+	<div id="film-notes" data-ng-show="loggedIn == '1'">
+		<h2>Comments</h2>
+		<div	data-ng-hide="filmCount == '1'"
+				data-ng-click="showEditNote($event, filmnote, 'noteEditor')"
+        		style="cursor: pointer;">
+			<p>Enter your comments!</p>
+			<input type="hidden" value="{{filmnote.film_id}}" />
+		</div>
+		<div	data-ng-show="filmCount == '1'"
+				data-ng-repeat="filmnote in filmnotes"
+				data-ng-click="showEditNote($event, filmnote, 'noteEditor')"
+        		style="cursor: pointer;">
+			<p>{{filmnote.comment}}</p>
+			<input type="hidden" value="{{filmnote.film_id}}" />
+		</div>
+	</div>
+</section>
