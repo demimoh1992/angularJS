@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-ng-app="FilmApp"> <!--  indicate that our page is an Angular application -->
+    <head>
+        <title>Web Application Integration Assignment Homepage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="resources/css/app.css" />
+    </head>
+    <body>
+		<nav data-ng-controller="IndexController">
+			<ul>
+				<li data-ng-repeat="menu in menus">
+					<a href="{{menu.url}}">{{menu.title}}</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="body-wrapper">
+			<div id="loginForm">
+				<section data-ng-controller="IndexController">
+					<form data-ng-hide="loggedIn == '1'" ng-submit="login(email, password); checkLogin()" method="post">
+						<label for="email">Email</label>
+						<input type="text" name="email" ng-model="email" required />
+
+						<label for="password">Password</label>
+						<input type="password" name="password" ng-model="password" required />
+
+						<button type="submit">Login!</button>
+					</form>
+					<div data-ng-show="loggedIn == '1'">
+						<p>Logged in as {{username}}</p>
+						<button ng-click="logout()">Logout!</button>
+					</div>
+				</section>
+			</div>
+
+			<div id="pageTitle">
+				<section data-ng-controller="IndexController">
+					<!-- use double braces to refer to a property defined in IndexController -->
+					<h1>{{title}}</h1>
+				</section>
+			</div>
+
+			<div id="main-content">
+
+				<article id="film-listing" data-ng-controller="FilmController" data-ng-include="'js/partials/film-list.html'" id="filmList">
+				</article>
+
+				<article id="film-detail-listing" data-ng-view >
+				</article>
+
+			</div>
+		</div>
+
+      <!-- load the basic angular libraries, though initially we'll only need the first two -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js"></script>
+
+      <!-- link to our application files -->
+      <script src="js/app.js"></script>
+      <script src="js/controllers.js"></script>
+      <script src="js/services.js"></script>
+
+    </body>
+</html>

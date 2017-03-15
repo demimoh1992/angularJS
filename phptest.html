@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html data-ng-app="FilmApp"> <!--  indicate that our page is an Angular application -->
+    <head>
+        <title>Web Application Integration Assignment PHP Testing </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="resources/css/app.css" />
+    </head>
+    <body>
+    	<nav data-ng-controller="IndexController">
+			<ul>
+				<li data-ng-repeat="menu in menus">
+					<a href="{{menu.url}}">{{menu.title}}</a>
+				</li>
+			</ul>
+		</nav>
+		<main>
+			<div id="phptesting">
+				<h1>PHP Testing</h1>
+				<p>The JSON result will only show the first 20 results, and adding the pageNum by 20 proceeds to the next 20 and etc.</p>
+				<table class="film-list-table">
+					<tr>
+						<th>Link</th>
+					</tr>
+
+					<!--if the function selectCourse to $scope in controller, the function will be visible here -->
+					<!--ng-class will be set to "selected" if the expression === true -->
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=filmCount">Show All Films</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=films">Show First 20 Films</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=films&pageNum=21">Show Next 20 Films<a/></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=category">Show All Category Type</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=films&term=air">Show Search Result</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=films&category=1">Show Category Result</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=films&category=5&term=air">Show Search and Category Result</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=actors&film_id=1">Show Actors of A Film</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=list&subject=filmNote&film_id=2">Show Notes</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/index.html">User log in and log out</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/server/index.php?action=isloggedin&subject=user">Check if logged in or not</a></td>
+					</tr>
+					<tr>
+						<td><a href="http://localhost/cm0665-assignment/index.html">Create or change note</a></td>
+					</tr>
+				</table>
+			</div>
+		</main>
+
+      <!-- load the basic angular libraries, though initially we'll only need the first two -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.js"></script>
+
+      <!-- link to our application files -->
+      <script src="js/app.js"></script>
+      <script src="js/controllers.js"></script>
+      <script src="js/services.js"></script>
+
+    </body>
+</html>
